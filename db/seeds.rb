@@ -6,8 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-product = Product.create(name:"DVD Player", price: 100, image_url:"dvd_player.jpg", description: "The best DVD player")
-product = Product.create(name:"Record Player", price: 100, image_url:"record_player.jpg", description: "Back to the basics")
-product = Product.create(name:"Boombox", price: 250, image_url:"boombox.jpg", description: "Taking it back to the old skool")
-product = Product.create(name:"Computer", price: 2000, image_url:"computer.jpg", description: "Top of the line performance")
-product = Product.create(name:"iPhone", price: 700, image_url:"iphonejpg", description: "The best phone")
+#iniital seeds
+
+# product = Product.create(name:"DVD Player", price: 100, image_url:"dvd_player.jpg", description: "The best DVD player")
+# product = Product.create(name:"Record Player", price: 100, image_url:"record_player.jpg", description: "Back to the basics")
+# product = Product.create(name:"Boombox", price: 250, image_url:"boombox.jpg", description: "Taking it back to the old skool")
+# product = Product.create(name:"Computer", price: 2000, image_url:"computer.jpg", description: "Top of the line performance")
+# product = Product.create(name:"iPhone", price: 700, image_url:"iphonejpg", description: "The best phone")
+
+
+
+20.times do
+  Product.create!(name: FFaker::Product.product,
+                   price: FFaker::Internet.email,
+                   image_url: FFaker::Image.url,
+                   description: FFaker::Lorem.sentence
+                  )
+end

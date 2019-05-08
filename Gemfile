@@ -49,3 +49,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'http'
 gem 'rack-cors'
+
+group :development, :test do
+  gem 'ffaker'
+end
