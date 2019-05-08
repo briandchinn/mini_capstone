@@ -1,1 +1,1 @@
-json.message "hello"
+json.product @dvd_player

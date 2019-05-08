@@ -1,0 +1,1 @@
+json.product @record_player
