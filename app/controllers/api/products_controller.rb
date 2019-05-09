@@ -30,5 +30,12 @@ class Api::ProductsController < ApplicationController
     render "all_products.json.jbuilder"
   end
 
+  def single_product_query
+    product = params[:name]
+
+    @select_product = Product.find_by(name:"#{product}")
+    render 'single_product_query.json.jbuilder'
+  end
+
 
 end

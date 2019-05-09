@@ -1,0 +1,1 @@
+json.message @select_product
