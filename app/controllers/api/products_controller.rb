@@ -1,6 +1,9 @@
 class Api::ProductsController < ApplicationController
 
+  # before_action :authenticate_user
+
   def index
+    
     
     @products = Product.all
 
@@ -18,14 +21,21 @@ class Api::ProductsController < ApplicationController
       else
         @products = @products.order(:price)
       end
+
+
     end    
 
     render 'index.json.jbuilder'
   end
 
   def show
-    @product = Product.find(params[:id])
-    render 'show.json.jbuilder'
+    if current_user
+      @product = Product.find(params[:id])
+      render 'show.json.jbuilder'
+    else
+      render json: []
+    end
+
   end
 
   def create
@@ -33,9 +43,16 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      in_stock: params[:in_stock]
+      in_stock: params[:in_stock],
+      supplier_id: params[:supplier_id]
       )
     @product.save
+
+    # Messing around with 
+    # @image = Image.new(url: params[:url])
+
+    # @image.product = @image
+    # @image.save
 
     if @product.save
       render 'show.json.jbuilder'

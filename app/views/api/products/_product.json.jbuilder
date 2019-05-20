@@ -6,6 +6,8 @@ json.discount product.is_discounted?
 json.in_stock product.in_stock
 json.supplier_name product.supplier.name
 json.images product.images
+json.supplier_id product.supplier_id
+json.current_user current_user
 
 
 json.formatted do
