@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 
+  has_many :orders
   belongs_to :supplier
 
   # def supplier
