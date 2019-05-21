@@ -1,10 +1,9 @@
 class Api::ProductsController < ApplicationController
 
-  # before_action :authenticate_user
+  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_admin, only: [:create, :update, :destroy] 
 
   def index
-    
-    
     @products = Product.all
 
     if params[:search]
@@ -21,22 +20,16 @@ class Api::ProductsController < ApplicationController
       else
         @products = @products.order(:price)
       end
-
-
     end    
 
     render 'index.json.jbuilder'
   end
 
   def show
-    if current_user
-      @product = Product.find(params[:id])
-      render 'show.json.jbuilder'
-    else
-      render json: []
-    end
-
+    @product = Product.find(params[:id])
+    render 'show.json.jbuilder'
   end
+
 
   def create
     @product = Product.new(
@@ -47,12 +40,6 @@ class Api::ProductsController < ApplicationController
       supplier_id: params[:supplier_id]
       )
     @product.save
-
-    # Messing around with 
-    # @image = Image.new(url: params[:url])
-
-    # @image.product = @image
-    # @image.save
 
     if @product.save
       render 'show.json.jbuilder'
