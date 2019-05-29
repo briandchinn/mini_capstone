@@ -39,7 +39,12 @@ class ProductsController < ApplicationController
       in_stock: params[:in_stock],
       supplier_id: params[:supplier_id]
       )
-    @product.save
+    if @product.save
+      Image.create(
+        url: params[:image_url],
+        product_id: @product.id 
+        )
+    end
 
     redirect_to "/products/#{@product.id}"
 

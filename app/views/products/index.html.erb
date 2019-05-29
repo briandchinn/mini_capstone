@@ -1,8 +1,14 @@
 <h1>Camera Products</h1>
 
 <% @products.each do |product| %>
-<h2><%= product.name %></h2>
-<h3>Description: <%= product.description %></h3>
-<h4>Price: <%= product.price %></h4>
-<a href="/products/<%= product.id %>">More Info</a>
+  <h2><%= product.name %></h2>
+  <h3>Description: <%= product.description %></h3>
+  <h4>Price: <%= product.price %></h4>
+  <% if product.images.first %>
+    <img src="<%= product.images.first.url %>" alt="" width="400">
+  <% end %>
+  <div>
+    <input type="button" name="" value="More Info" onclick="window.location.href='/products/<%= product.id %>'">
+  </div>
+  <hr>
 <% end %>
