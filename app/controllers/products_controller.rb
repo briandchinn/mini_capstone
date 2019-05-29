@@ -45,9 +45,35 @@ class ProductsController < ApplicationController
 
   end
 
+  def update
+    @product = Product.find(params[:id])
+
+    @product.name = params[:name] 
+    @product.price = params[:price] 
+    @product.description = params[:description] 
+    @product.in_stock = params[:in_stock]
+    @product.supplier = params[:supplier] || @product.supplier
+      
+    @product.save
+
+    redirect_to "/products/#{@product.id}"
+  end
+
   def show
     @product = Product.find(params[:id])
     render 'show.html.erb'
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    render 'edit.html.erb'
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    redirect_to "/products"
   end
 
 end

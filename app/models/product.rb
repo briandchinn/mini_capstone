@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   has_many :images
   belongs_to :supplier
 
+  accepts_nested_attributes_for :images
 
   validates :name, presence: true, uniqueness: true
   validates :price, numericality: {greater_than: 0}
