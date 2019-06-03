@@ -6,8 +6,15 @@
 
 
 <h3>Description: <%= @product.description %></h3>
+<h3>Sku: <%= @product.sku %></h3>
+
+<h3>Regular Price: <%= number_to_currency(@product.regular_price) %> </h3>
 <h3>Price: <%= number_to_currency(@product.price) %></h3>
-<h3>In Stock: <%= @product.in_stock %></h3>
+<h3>Savings: <%= number_to_currency(@product.price_savings) %></h3>
+<h3>Discount: <%= number_to_percentage(@product.discount) %></h3>
+
+<h3> <%= @product.stock_status %> </h3>
+
 <h3>Supplier: <%= @product.supplier.name %> </h3>
 
 

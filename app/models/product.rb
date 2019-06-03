@@ -29,4 +29,20 @@ class Product < ApplicationRecord
     (price + tax).round(2)
   end
 
+  def stock_status
+    if in_stock == TRUE
+      return "In Stock & Ready to Ship!"
+    else
+      return "Not in Stock. Check back later."
+    end
+  end
+
+  def price_savings
+    (regular_price - price).round(2)
+  end
+
+  def discount
+    ((regular_price - price) / regular_price * 100)
+  end
+
 end

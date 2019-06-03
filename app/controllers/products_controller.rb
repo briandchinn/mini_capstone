@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(
       name: params[:name],
+      regular_price: params[:regular_price],
       price: params[:price],
       description: params[:description],
       in_stock: params[:in_stock],
@@ -54,7 +55,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     @product.name = params[:name] 
-    @product.price = params[:price] 
+    @product.price = params[:price]
+    @product.regular_price = params[:regular_price] 
     @product.description = params[:description] 
     @product.in_stock = params[:in_stock]
     @product.supplier = params[:supplier] || @product.supplier
