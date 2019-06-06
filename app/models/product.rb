@@ -42,7 +42,7 @@ class Product < ApplicationRecord
   end
 
   def discount
-    ((regular_price - price) / regular_price * 100)
+    ((regular_price - price) / regular_price * 100).round(2)
   end
 
 end

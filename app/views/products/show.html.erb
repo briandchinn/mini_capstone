@@ -11,7 +11,7 @@
 <h3>Regular Price: <%= number_to_currency(@product.regular_price) %> </h3>
 <h3>Price: <%= number_to_currency(@product.price) %></h3>
 <h3>Savings: <%= number_to_currency(@product.price_savings) %></h3>
-<h3>Discount: <%= number_to_percentage(@product.discount) %></h3>
+<h3>Discount: <%= number_to_percentage(@product.discount, precision: 0) %></h3>
 
 <h3> <%= @product.stock_status %> </h3>
 
